@@ -40,14 +40,15 @@ class _homeState extends State<home> {
       double altura = double.parse(alturaController.text) / 100;
       double imc = peso / (altura * altura);
       String imcPrecision = imc.toStringAsPrecision(3);
+
       if (imc < 18.6) {
-        _resp = 'Abaixo do peso: $imcPrecision';
+        _resp = 'Abaixo do peso: $imc';
       } else if (imc < 25) {
-        _resp = 'Peso normal: $imcPrecision';
+        _resp = 'Peso normal: $imc';
       } else if (imc < 35) {
-        _resp = 'Acima do peso: $imcPrecision';
+        _resp = 'Acima do peso: $imc';
       } else {
-        _resp = 'Obesidade 1: $imcPrecision';
+        _resp = 'Obesidade 1: $imc';
       }
     });
   }
@@ -88,8 +89,8 @@ class _homeState extends State<home> {
                     style: TextStyle(color: maximumBlue, fontSize: 20),
                     controller: pesoController,
                     validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Insira seu peso';
+                      if (value.isEmpty||value.length>3||value.length<2) {
+                        return 'Insira seu peso correto';
                       }
                     },
                   ),
@@ -102,8 +103,8 @@ class _homeState extends State<home> {
                     style: TextStyle(color: maximumBlue, fontSize: 20),
                     controller: alturaController,
                     validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Insira seu altura';
+                      if (value.isEmpty||value.length>3) {
+                        return 'Insira seu altura correta';
                       }
                     },
                   ),
@@ -114,7 +115,7 @@ class _homeState extends State<home> {
                       child: RaisedButton(
                         onPressed: () {
                           if (_formKey.currentState.validate()) {
-                            _calcularImc;
+                            _calcularImc();
                           }
                         },
                         child: Text(
