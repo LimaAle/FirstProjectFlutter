@@ -8,4 +8,6 @@
 
 - 3 [Converso de moedas](https://github.com/LimaAle/ProjetosFlutter/tree/master/conversor_moedas)
 
-- 4 [Lista de taregas](#)
+- 4 [Lista de taregas](https://github.com/LimaAle/ProjetosFlutter/tree/master/lista_tarefa)
+
+- 5 [Buscador de gifs](#)
